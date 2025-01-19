@@ -6,7 +6,7 @@ use Tests\Support\UserTestBase;
 use Codeception\Util\HttpCode;
 
 class SecurityTest extends UserTestBase {
-    public function testCreateUserUnauthorized(ApiTester $I): void
+    public function testCreateUserUnauthorized($I): void
     {
         $I->wantTo('Ensure unauthorized access is rejected when creating a user');
         $this->setHeaders($I, false); // No authentication header
@@ -18,7 +18,7 @@ class SecurityTest extends UserTestBase {
         $I->seeResponseContainsJson(['title' => 'Unauthorized']);
     }
 
-    public function testUpdateUserUnauthorized(ApiTester $I): void
+    public function testUpdateUserUnauthorized($I): void
     {
         $I->wantTo('Ensure unauthorized access is rejected when updating a user');
         $this->setHeaders($I, false); // No authentication header
@@ -32,7 +32,7 @@ class SecurityTest extends UserTestBase {
     }
 
     // Test unauthorized access for Get User
-    public function testGetUserUnauthorized(ApiTester $I): void
+    public function testGetUserUnauthorized($I): void
     {
         $I->wantTo('Ensure unauthorized access is rejected when retrieving a user');
         $this->setHeaders($I, false); 
@@ -44,7 +44,7 @@ class SecurityTest extends UserTestBase {
         $I->seeResponseContainsJson(['title' => 'Unauthorized']);
     }
 
-    public function testDeleteUserUnauthorized(ApiTester $I): void
+    public function testDeleteUserUnauthorized($I): void
     {
         $I->wantTo('Ensure unauthorized access is rejected when deleting a user');
         $this->setHeaders($I, false); 

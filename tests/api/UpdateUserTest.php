@@ -7,12 +7,12 @@ use Codeception\Util\HttpCode;
 
 class UpdateUserTest extends UserTestBase {
 
-    public function updateUserDetails(ApiTester $I): void
+    public function updateUserDetails($I): void
     {
         $I->wantTo('Update user details');
         $this->setHeaders($I, true);
 
-        $userId = $this->createUser($I, $this->getValidUserData());
+        $userId = $this->createUser($I);
         $updatedData = [
             "firstName" => "John",
             "lastName" => "Smith",
@@ -31,7 +31,7 @@ class UpdateUserTest extends UserTestBase {
         $I->seeResponseContainsJson($updatedData);
 }
 
-    public function updateNonExistentUser(ApiTester $I)
+    public function updateNonExistentUser($I)
     {
         $I->wantTo('Update a non-existent user');
         $this->setHeaders($I, true);

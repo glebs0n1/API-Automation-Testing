@@ -4,12 +4,12 @@ namespace Tests\Support;
 
 use Codeception\Module;
 use Codeception\Util\HttpCode;
-use Tests\Api\ApiTester;
 
 class UserTestBase extends Module{ 
-    protected string $apiBasePath = '/api'; // Define your base path here
+    
+    protected string $apiBasePath = '/api'; // API base URL path 
 
-    protected function setHeaders(ApiTester $I, bool $withAuth = false): void
+    protected function setHeaders($I, bool $withAuth = false): void
     {
         $I->haveHttpHeader('Content-Type', 'application/json');
         if ($withAuth) {
@@ -32,7 +32,7 @@ class UserTestBase extends Module{
         ];
     }
 
-    protected function createUser(ApiTester $I): string
+    protected function createUser($I): string
     {
         $this->setHeaders($I, true);  
         $userData = $this->getValidUserData();

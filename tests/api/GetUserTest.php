@@ -7,26 +7,26 @@ use Codeception\Util\HttpCode;
 
 class GetUserTest extends UserTestBase {
 
-    public function getUserById(ApiTester $I): void
+    public function getUserById($I): void
     {
         $I->wantTo('Retrieve a user by ID');
         $this->setHeaders($I);
 
         $userData = $this->getValidUserData();
-        $userId = $this->createUser($I, $userData);
+        $userId = $this->createUser($I);
         $I->sendGet("/users/{$userId}");
         $I->seeResponseCodeIs(HttpCode::OK); // 200
         $I->seeResponseIsJson();
         $I->seeResponseContainsJson(["id" => $userId]);
     }
 
-    public function getAllUsers(ApiTester $I): void
+    public function getAllUsers($I): void
     {
         $I->wantTo('Retrieve a list of all users');
         $this->setHeaders($I);
 
         // Ensure there is at least one user
-        $this->createUser($I, $this->getValidUserData());
+        $this->createUser($I);
         
         $I->sendGet($this->apiBasePath);
         $I->seeResponseCodeIs(HttpCode::OK); // 200
@@ -36,7 +36,7 @@ class GetUserTest extends UserTestBase {
         ]);
     }
 
-    public function getUserWithInvalidId(ApiTester $I): void
+    public function getUserWithInvalidId($I): void
     {
         $I->wantTo('Ensure retrieving a user with an invalid ID returns a proper error');
         $this->setHeaders($I);
@@ -49,7 +49,7 @@ class GetUserTest extends UserTestBase {
  
     }
 
-    public function getUserWithInvalidData(ApiTester $I)
+    public function getUserWithInvalidData($I)
     {
         $I->wantTo('Ensure invalid user creation is handled properly');
         $this->setHeaders($I);

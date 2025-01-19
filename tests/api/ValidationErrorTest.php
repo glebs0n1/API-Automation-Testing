@@ -7,7 +7,7 @@ use Codeception\Util\HttpCode;
 
 class ValidationErrorTest extends UserTestBase {
 
-    public function testCreateUserWithInvalidData(ApiTester $I): void
+    public function testCreateUserWithInvalidData($I): void
     {
         $I->wantTo('Ensure invalid input is handled correctly');
         $this->setHeaders($I, true);
@@ -34,7 +34,7 @@ class ValidationErrorTest extends UserTestBase {
         }
     }
 
-    public function testCreateUserWithInvalidEmail(ApiTester $I): void
+    public function testCreateUserWithInvalidEmail($I): void
     {
         $I->wantTo('Ensure user creation fails with an invalid email');
         $this->setHeaders($I, true);
@@ -47,7 +47,7 @@ class ValidationErrorTest extends UserTestBase {
         $I->seeResponseContainsJson(['title' => 'Invalid Input']);
     }
 
-    public function testCreateUserWithInvalidDateOfBirth(ApiTester $I): void
+    public function testCreateUserWithInvalidDateOfBirth($I): void
     {
         $I->wantTo('Ensure user creation fails with an invalid date of birth');
         $this->setHeaders($I, true);
@@ -60,7 +60,7 @@ class ValidationErrorTest extends UserTestBase {
         $I->seeResponseContainsJson(['title' => 'Invalid Input']);
     }
 
-    public function testCreateUserWithInvalidValidUntil(ApiTester $I): void
+    public function testCreateUserWithInvalidValidUntil($I): void
     {
         $I->wantTo('Ensure user creation fails with an invalid validUntil date');
         $this->setHeaders($I, true);
@@ -74,7 +74,7 @@ class ValidationErrorTest extends UserTestBase {
     }
 
 
-    public function testCreateUserWithInvalidCountryOfIssue(ApiTester $I): void
+    public function testCreateUserWithInvalidCountryOfIssue($I): void
     {
         $I->wantTo('Ensure user creation fails with an invalid countryOfIssue');
         $this->setHeaders($I, true);
@@ -87,7 +87,7 @@ class ValidationErrorTest extends UserTestBase {
         $I->seeResponseContainsJson(['title' => 'Invalid Input']);
     }
 
-    public function testCreateUserWithMissingDocumentId(ApiTester $I): void
+    public function testCreateUserWithMissingDocumentId($I): void
     {
         $I->wantTo('Ensure user creation fails with a missing documentId');
         $this->setHeaders($I, true);
@@ -100,7 +100,7 @@ class ValidationErrorTest extends UserTestBase {
         $I->seeResponseContainsJson(['title' => 'Invalid Input']);
     }
 
-    public function testCreateUserWithShortDocumentId(ApiTester $I): void
+    public function testCreateUserWithShortDocumentId($I): void
     {
         $I->wantTo('Ensure user creation fails with a short documentId');
         $this->setHeaders($I, true);
@@ -113,7 +113,7 @@ class ValidationErrorTest extends UserTestBase {
         $I->seeResponseContainsJson(['title' => 'Invalid Input']);
     }
 
-    public function testCreateUserWithValidData(ApiTester $I): void
+    public function testCreateUserWithValidData($I): void
     {
         $I->wantTo('Ensure user creation works correctly with valid data');
         $this->setHeaders($I, true);
@@ -126,7 +126,7 @@ class ValidationErrorTest extends UserTestBase {
         $I->seeResponseContainsJson(['firstName' => 'John', 'lastName' => 'Doe', 'email' => 'john.doe@example.com']);
     }
 
-    public function testUpdateNonExistingUser(ApiTester $I): void
+    public function testUpdateNonExistingUser($I): void
     {
         $I->wantTo('Ensure updating a non-existing user returns 404');
         $this->setHeaders($I, true);

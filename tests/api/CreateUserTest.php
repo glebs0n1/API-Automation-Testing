@@ -3,17 +3,16 @@
 namespace Tests\Api;
 
 use Tests\Support\UserTestBase;
+use Codeception\Util\HttpCode; 
 
 class CreateUserTest extends UserTestBase {
 
-    public function testCreateUserSuccessfully(ApiTester $I): void {
+    public function testCreateUserSuccessfully($I): void {
         $I->wantTo('Create a user successfully with valid data');
         $this->setHeaders($I);
 
         $userData = $this->getValidUserData();
-        // Send POST request to create user
         $I->sendPost($this->apiBasePath . '/users', json_encode($userData));
-
         $I->seeResponseCodeIs(HttpCode::CREATED); // 201
         $I->seeResponseIsJson();
         $I->seeResponseContainsJson($userData);
