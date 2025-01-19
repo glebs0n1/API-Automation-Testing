@@ -52,5 +52,6 @@ Example tests include:
 <li>Additional Information</li>
 <li>Test Data: Test data (e.g., user information) can be configured in the tests/Support/UserTestBase.php file.</li>
 </ul>
+
 ### Test Reports: The results of the tests are displayed in the terminal by default.
 
