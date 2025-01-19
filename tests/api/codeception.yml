@@ -1,0 +1,24 @@
+actor: Tester
+extensions:
+    enabled:
+        - Codeception\Extension\RunCounter
+paths:
+    tests: tests
+    support: tests/_support
+    data: tests/_data
+    helpers: tests/_support/Helper
+    envs: tests/_envs
+    var: tests/_output
+    log: tests/_output
+    reports: tests/_output
+    tests_template: tests/_tests
+    coverage: tests/_coverage
+    output: tests/_output
+    backup: tests/_backup
+    docs: tests/_docs
+modules:
+  enabled:
+    - REST:
+        url: 'http://localhost/api'
+        depends: PhpBrowser
+    - \Helper\Api
